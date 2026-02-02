@@ -1,0 +1,100 @@
+﻿<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>美股匯率試算器</h2>
+    <p>
+        透過此工具，試算股票漲跌在不同匯率下的實際影響。
+        不需下載、不蒐集任何個資。
+    </p>
+
+    <h3>匯率設定</h3>
+    <p>
+        匯率買入（台幣 / 美元）：
+        <input id="buyRate" type="number" step="0.01">
+    </p>
+    <p>
+        匯率賣出（台幣 / 美元）：
+        <input id="sellRate" type="number" step="0.01">
+    </p>
+
+    <h3>計算模式(輸入價格 → 計算漲幅 %/輸入漲幅 % → 計算賣出價格)</h3>
+    <select id="calcMode">
+        <option value="price">計算漲幅 %</option>
+        <option value="percent">計算賣出價格</option>
+    </select>
+
+    <div id="priceMode">
+        <p>
+            股票買入價格：
+            <input id="stockBuy" type="number" step="0.01">
+        </p>
+        <p>
+            股票賣出價格：
+            <input id="stockSell" type="number" step="0.01">
+        </p>
+    </div>
+
+    <div id="percentMode" style="display:none">
+        <p>
+            股票買入價格：
+            <input id="stockBuyPercent" type="number" step="0.01">
+        </p>
+        <p>
+            預期股票漲幅（%）：
+            <input id="stockPercent" type="number" step="0.01">
+        </p>
+    </div>
+        <button id="calcBtn">試算</button>
+    <h3>投資判斷結果</h3>
+    <div style="display:flex;align-items:center;gap:8px;">
+        <div id="statusIcon" style="
+            width:16px;
+            height:16px;
+            border-radius:50%;
+            background:#ccc;
+        "></div>
+    </div>
+
+    <pre id="result"></pre>
+
+    <hr>
+
+<p><strong>名詞說明（如何解讀上方試算結果）</strong></p>
+
+<p>
+    <strong>判斷建議</strong>：<br>
+    當「預期股票報酬率」高於「股票安全報酬率」時，代表報酬較能補償匯率與市場風險；<br>
+    若低於安全報酬率，則需留意實際風險可能高於預期。
+</p>
+
+<p>
+    <strong>匯差損失率</strong>：<br>
+    因賣出時匯率與買入時不同，造成實際換回台幣金額的增減比例。<br>
+    即使股票價格沒有下跌，匯率變動仍可能影響最終投資結果。
+</p>
+
+<p>
+    <strong>股票保本報酬率</strong>：<br>
+    在考慮匯率影響後，股票至少需要上漲的比例，投資結果才不會賠錢。<br>
+    這是「不賠錢的最低門檻」，不是獲利目標。
+</p>
+
+<p>
+    <strong>股票安全報酬率</strong>：<br>
+    在能夠保本的前提下，再加入手續費與風險緩衝後，較安心的最低目標報酬率。<br>
+    通常會高於保本報酬率，用來評估是否值得承擔風險。
+</p>
+
+<p>
+    <strong>預期股票報酬率</strong>：<br>
+    根據你的判斷或市場預期，該股票未來可能達到的報酬率。<br>
+    可用來與安全報酬率比較，判斷這筆投資是否合理。
+</p>
+
+    <script src="./logic.js"></script>
+    <script src="./main.js"></script>
+    <script src="./ui.js"></script>
+</body>
+
+
