@@ -1,197 +1,269 @@
 /* ===== 基本重置與字體 ===== */
-:root{
-  --bg: #f6f7f9;
-  --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --line: #e5e7eb;
+:root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --line: #e5e7eb;
 
-  --primary: #111827;
-  --primaryHover: #0b1220;
+    --primary: #111827;
+    --primaryHover: #0b1220;
 
-  --radius: 12px;
-  --shadow: 0 10px 25px rgba(0,0,0,.06);
+    --radius: 12px;
+    --shadow: 0 10px 25px rgba(0, 0, 0, .06);
 
-  --danger: #e74c3c;
-  --warn: #f1c40f;
-  --ok: #2ecc71;
+    --danger: #e74c3c;
+    --warn: #f1c40f;
+    --ok: #2ecc71;
 }
 
-*{ box-sizing: border-box; }
-html, body{ height: 100%; }
-body{
-  margin: 0;
-  color: var(--text);
-  background: var(--bg);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans TC", Arial, sans-serif;
-  line-height: 1.6;
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 28px 16px 48px;
+    color: var(--text);
+    background: var(--bg);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans TC", Arial, sans-serif;
+    line-height: 1.6;
 }
 
 /* ===== 版面容器 ===== */
-body{
-  padding: 28px 16px 48px;
-}
-body > *{
-  max-width: 920px;
-  margin-left: auto;
-  margin-right: auto;
+
+body>* {
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ===== 標題與段落 ===== */
-h2{
-  margin: 0 0 8px;
-  font-size: 28px;
-  letter-spacing: .2px;
+h2 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    letter-spacing: .2px;
 }
-h3{
-  margin: 22px 0 10px;
-  font-size: 18px;
+
+h3 {
+    margin: 22px 0 10px;
+    font-size: 18px;
 }
-p{
-  margin: 10px 0;
-  color: var(--text);
+
+p {
+    margin: 10px 0;
+    color: var(--text);
 }
-p[style*="color"]{ /* 你目前 inline 的 muted 文字 */
-  color: var(--muted) !important;
+
+p[style*="color"] {
+    /* 你目前 inline 的 muted 文字 */
+    color: var(--muted) !important;
+}
+
+/* ===== 實用工具類別 ===== */
+.hidden {
+    display: none;
+}
+.flex-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.title-inline {
+    margin: 0;
+}
+.muted {
+    color: var(--muted);
+    font-size: 14px;
+}
+.muted-555 {
+    color: #555;
+    font-size: 14px;
+}
+.muted-777 {
+    color: #777;
+    font-size: 13px;
 }
 
 /* ===== 列表 ===== */
-ul{
-  margin: 10px 0 0 20px;
-  padding: 0;
-  color: var(--text);
+ul {
+    margin: 10px 0 0 20px;
+    padding: 0;
+    color: var(--text);
 }
-li{
-  margin: 6px 0;
+
+li {
+    margin: 6px 0;
 }
 
 /* ===== 分隔線 ===== */
-hr{
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: 18px auto;
-  max-width: 920px;
+hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 18px auto;
+    max-width: 920px;
 }
 
-/* ===== 表單區塊卡片感（用你現有 h3 做區隔） ===== */
-h3 + p,
-h3 + select,
-h3 + div,
-h3 + ul{
-  margin-top: 8px;
+/* ===== 表單相關 ===== */
+h3+p,
+h3+select,
+h3+div,
+h3+ul {
+    margin-top: 8px;
 }
 
-/* ===== input / select ===== */
-input[type="number"], select{
-  width: min(420px, 100%);
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--card);
-  color: var(--text);
-  outline: none;
-}
-input[type="number"]:focus, select:focus{
-  border-color: #c7cdd6;
-  box-shadow: 0 0 0 3px rgba(17,24,39,.08);
+input[type="number"],
+select {
+    width: min(420px, 100%);
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
 }
 
-/* 讓每個 <p> 的 label+input 好看一點 */
-p > input[type="number"]{
-  display: block;
-  margin-top: 6px;
+input[type="number"]:focus,
+select:focus {
+    border-color: #c7cdd6;
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, .08);
 }
 
-/* ===== 按鈕 ===== */
-#calcBtn{
-  margin-top: 10px;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 10px;
-  background: var(--primary);
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-}
-#calcBtn:hover{
-  background: var(--primaryHover);
-}
-#calcBtn:active{
-  transform: translateY(1px);
+p>input[type="number"] {
+    display: block;
+    margin-top: 6px;
 }
 
-/* ===== 結果區 ===== */
-#result{
-  margin-top: 12px;
-  padding: 14px 16px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-break: break-word;
-  min-height: 72px;
+/* ===== 按鈕組合 ===== */
+button {
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-/* 狀態 icon 旁邊那塊 */
-#statusIcon{
-  box-shadow: 0 0 0 4px rgba(240, 236, 236, 0.04);
+#calcBtn {
+    margin-top: 10px;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
 }
 
-/* ===== 底部 CTA 區 ===== */
-a{
-  color: #111827;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-a:hover{
-  opacity: .8;
+#calcBtn:hover {
+    background: var(--primaryHover);
 }
 
-/* ===== 手機調整 ===== */
-@media (max-width: 520px){
-  h2{ font-size: 24px; }
-  body{ padding-top: 20px; }
-  #calcBtn{ width: 100%; }
+#calcBtn:active {
+    transform: translateY(1px);
+}
+
+#demoBtn {
+    margin-top: 10px;
+    border: none;
+    background: var(--primary);
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+#demoBtn:hover {
+    background: var(--primaryHover);
+}
+
+.btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ===== 結果與狀態 ===== */
+#result {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 72px;
+}
+
+#statusIcon {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, .06);
 }
 
 /* ===== 卡片區塊 ===== */
-.card{
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  margin: 18px auto;
-  box-shadow: var(--shadow);
+.card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin: 18px auto;
+    box-shadow: var(--shadow);
 }
 
-/* 卡片內的標題稍微收斂 */
-.card h3{
-  margin-top: 0;
+.card h3 {
+    margin-top: 0;
 }
 
-/* 卡片內按鈕不要太貼 */
-.card #calcBtn{
-  margin-top: 12px;
+.card #calcBtn {
+    margin-top: 12px;
 }
 
-/* 卡片內的結果區 */
-.card pre#result{
-  box-shadow: none;
-  border: 1px dashed var(--line);
-  background: #fafafa;
-  padding: 12px 14px;
-  min-height: 72px;
+.card pre#result {
+    box-shadow: none;
+    border: 1px dashed var(--line);
+    background: #fafafa;
+    padding: 12px 14px;
+    min-height: 72px;
 }
 
-/* 狀態圓形圖示 */
-#statusIcon{
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #ccc;
-  display: inline-block;
+/* ===== 連結 ===== */
+a {
+    color: #111827;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
+a:hover {
+    opacity: .8;
+}
 
+/* ===== 手機調整 ===== */
+@media (max-width: 520px) {
+    h2 {
+        font-size: 24px;
+    }
+
+    body {
+        padding-top: 20px;
+    }
+
+    #calcBtn {
+        width: 100%;
+    }
+
+    ul {
+        margin-left: 16px;
+    }
+
+    .card {
+        padding: 14px 14px;
+        margin: 14px auto;
+    }
+
+    .btn-row {
+        flex-direction: column;
+    }
+}

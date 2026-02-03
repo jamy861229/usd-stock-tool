@@ -14,7 +14,7 @@
         不用下載、不用註冊，打開就能試算。
     </p>
 
-    <p style="color: #666; font-size: 14px">
+    <p class="muted">
         適合用來評估短期波動、換匯風險與保守打平門檻。
     </p>
 
@@ -40,7 +40,7 @@
 
     <div class="card">
         <h3>計算模式</h3>
-        <p style="font-size:14px;color:#666;">
+        <p class="muted">
             可選擇輸入股票價格，或直接輸入預期漲幅進行試算。
         </p>
 
@@ -60,7 +60,7 @@
             </p>
         </div>
 
-        <div id="percentMode" style="display: none">
+        <div id="percentMode" class="hidden">
             <p>
                 股票買入價格：
                 <input id="stockBuyPercent" type="number" step="0.01" />
@@ -70,23 +70,26 @@
                 <input id="stockPercent" type="number" step="0.01" />
             </p>
         </div>
+        <div class="btn-row">
+            <button id="calcBtn" type="button">試算</button>
+            <button id="demoBtn" type="button">範例填入</button>
+        </div>
 
-        <button id="calcBtn">試算</button>
     </div>
 
     <div class="card">
-        <div style="display:flex;align-items:center;gap:8px;">
-            <h3 style="margin:0;">投資判斷結果</h3>
+        <div class="flex-center">
+            <h3 class="title-inline">投資判斷結果</h3>
             <div id="statusIcon"></div>
         </div>
         <pre id="result"></pre>
     </div>
 
-    <p style="font-size: 14px; color: #555">
+    <p class="muted-555">
         試算結果會依股票漲幅與匯率條件，給出風險提示：
     </p>
 
-    <ul style="font-size: 14px; color: #555">
+    <ul class="muted-555">
         <li>🔴 低於打平門檻，匯率可能吃掉獲利</li>
         <li>🟡 剛好打平，風險偏高</li>
         <li>🟢 高於安全門檻，相對安全</li>
@@ -123,23 +126,17 @@
         可用來與安全報酬率比較，判斷這筆投資是否合理。
     </p>
 
-    <hr>
-
-    <p style="font-size:13px;color:#777;">
+    <p class="muted-777">
         本工具僅供試算與參考使用，實際投資結果請以券商成交與實際匯率為準。
     </p>
-    <hr>
-
-    <p style="font-size:14px;">
+    <p>
         覺得這個工具對你有幫助嗎？歡迎分享給朋友使用。
     </p>
-
-    <p style="font-size:13px;color:#555;">
+    <p class="muted-555">
         如果你喜歡這類實用小工具，也歡迎追蹤作者的 IG，
         或支持作者設計的貼圖，讓我能持續把工具做得更好。
     </p>
-
-    <p style="font-size:13px;">
+    <p>
         👉 <a href="【你的 IG 連結】" target="_blank">追蹤作者 IG</a> ｜
         👉 <a href="【你的貼圖購買連結】" target="_blank">購買作者貼圖</a>
     </p>
