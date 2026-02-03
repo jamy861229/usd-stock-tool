@@ -76,6 +76,9 @@ p[style*="color"] {
 }
 .title-inline {
     margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
 }
 .muted {
     color: var(--muted);
@@ -141,37 +144,41 @@ p>input[type="number"] {
 
 /* ===== 按鈕組合 ===== */
 button {
-    padding: 10px 14px;
+    height: 38px;
+    padding: 0 14px;
+    border: none;
     border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
     cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+button:hover {
+    background: var(--primaryHover);
+}
+
+button:active {
+    transform: translateY(1px);
 }
 
 #calcBtn {
     margin-top: 10px;
-    border: none;
-    background: var(--primary);
-    color: #fff;
-    font-weight: 600;
-}
-
-#calcBtn:hover {
-    background: var(--primaryHover);
-}
-
-#calcBtn:active {
-    transform: translateY(1px);
 }
 
 #demoBtn {
     margin-top: 10px;
-    border: none;
-    background: var(--primary);
-    color: #2ecc71;
-    font-weight: 600;
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--line);
 }
 
 #demoBtn:hover {
-    background: var(--primaryHover);
+    background: #f3f4f6;
 }
 
 .btn-row {
