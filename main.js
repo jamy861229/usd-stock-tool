@@ -1,4 +1,30 @@
-﻿const getNumber = (id) => {
+﻿// ===== 卡片收合功能 =====
+function toggleCard(headerElement) {
+    const cardElement = headerElement.closest('.card');
+    if (cardElement) {
+        cardElement.classList.toggle('collapsed');
+        // 保存收合狀態到 localStorage
+        const isCollapsed = cardElement.classList.contains('collapsed');
+        const cardIndex = Array.from(document.querySelectorAll('.card')).indexOf(cardElement);
+        localStorage.setItem(`card-${cardIndex}-collapsed`, isCollapsed);
+    }
+}
+
+// 在頁面載入時恢復收合狀態
+function restoreCardStates() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+        const wasCollapsed = localStorage.getItem(`card-${index}-collapsed`) === 'true';
+        if (wasCollapsed) {
+            card.classList.add('collapsed');
+        }
+    });
+}
+
+// 當頁面載入完成時恢復收合狀態
+document.addEventListener('DOMContentLoaded', restoreCardStates);
+
+const getNumber = (id) => {
     const el = document.getElementById(id);
     if (!el) return NaN;
     const value = Number(el.value);

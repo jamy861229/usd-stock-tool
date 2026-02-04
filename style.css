@@ -224,6 +224,48 @@ button:active {
     margin-top: 0;
 }
 
+/* ===== 卡片收合功能 ===== */
+.card-header {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s ease;
+}
+
+.card-header:hover {
+    opacity: 0.7;
+}
+
+.collapse-icon {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+.card.collapsed .collapse-icon {
+    transform: rotate(-90deg);
+}
+
+.card-content {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.card.collapsed .card-content {
+    max-height: 0;
+    opacity: 0;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
 .card #calcBtn {
     margin-top: 12px;
 }
