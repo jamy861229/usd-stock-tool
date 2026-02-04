@@ -1,20 +1,15 @@
-/* ===== 基本重置與字體 ===== */
 :root {
-    --bg: #f6f7f9;
+    --bg: #f1f3f6;
+    --bg-accent: #e8eef5;
     --card: #ffffff;
-    --text: #1f2937;
-    --muted: #6b7280;
-    --line: #e5e7eb;
-
-    --primary: #111827;
-    --primaryHover: #0b1220;
-
-    --radius: 12px;
-    --shadow: 0 10px 25px rgba(0, 0, 0, .06);
-
-    --danger: #e74c3c;
-    --warn: #f1c40f;
-    --ok: #2ecc71;
+    --text: #0f172a;
+    --muted: #5b6474;
+    --line: #e2e8f0;
+    --primary: #0f4c5c;
+    --primary-dark: #0a3944;
+    --accent: #f77f00;
+    --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    --radius: 18px;
 }
 
 * {
@@ -28,203 +23,146 @@ body {
 
 body {
     margin: 0;
-    padding: 28px 16px 48px;
     color: var(--text);
-    background: var(--bg);
-    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans TC", Arial, sans-serif;
+    background: #eef2f7;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
     line-height: 1.6;
 }
 
-/* ===== 版面容器 ===== */
-
-body>* {
-    max-width: 920px;
-    margin-left: auto;
-    margin-right: auto;
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 18px 56px;
 }
 
-/* ===== 標題與段落 ===== */
-h2 {
-    margin: 0 0 8px;
-    font-size: 28px;
-    letter-spacing: .2px;
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 28px;
+    padding: 26px 26px 30px;
+    background: linear-gradient(140deg, #ffffff 0%, #f4f7fb 70%);
+    border-radius: 26px;
+    border: 1px solid #e5ebf3;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    position: relative;
+    overflow: hidden;
 }
 
-h3 {
-    margin: 22px 0 10px;
-    font-size: 18px;
+
+.hero-content h1 {
+    font-family: "Sora", "Noto Sans TC", sans-serif;
+    font-size: 36px;
+    margin: 6px 0 10px;
+    letter-spacing: 0.5px;
 }
 
-p {
-    margin: 10px 0;
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.lead {
+    margin: 0 0 16px;
+    font-size: 16px;
     color: var(--text);
 }
 
-p[style*="color"] {
-    /* 你目前 inline 的 muted 文字 */
-    color: var(--muted) !important;
-}
-
-/* ===== 實用工具類別 ===== */
-.hidden {
-    display: none;
-}
-.flex-center {
+.hero-tags {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
 }
-.title-inline {
-    margin: 0;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-}
-.muted {
-    color: var(--muted);
-    font-size: 14px;
-}
-.muted-555 {
-    color: #555;
-    font-size: 14px;
-}
-.muted-777 {
-    color: #777;
+
+.tag {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(15, 76, 92, 0.08);
+    color: var(--primary);
     font-size: 13px;
-}
-
-/* ===== 列表 ===== */
-ul {
-    margin: 10px 0 0 20px;
-    padding: 0;
-    color: var(--text);
-}
-
-li {
-    margin: 6px 0;
-}
-
-/* ===== 分隔線 ===== */
-hr {
-    border: none;
-    border-top: 1px solid var(--line);
-    margin: 18px auto;
-    max-width: 920px;
-}
-
-/* ===== 表單相關 ===== */
-h3+p,
-h3+select,
-h3+div,
-h3+ul {
-    margin-top: 8px;
-}
-
-input[type="number"],
-select {
-    width: min(420px, 100%);
-    padding: 10px 12px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: var(--card);
-    color: var(--text);
-    outline: none;
-}
-
-input[type="number"]:focus,
-select:focus {
-    border-color: #c7cdd6;
-    box-shadow: 0 0 0 3px rgba(17, 24, 39, .08);
-}
-
-p>input[type="number"] {
-    display: block;
-    margin-top: 6px;
-}
-
-/* ===== 按鈕組合 ===== */
-button {
-    height: 38px;
-    padding: 0 14px;
-    border: none;
-    border-radius: 10px;
-    background: var(--primary);
-    color: #fff;
-    cursor: pointer;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
 }
 
-button:hover {
-    background: var(--primaryHover);
+.hero-panel {
+    background: #0f4c5c;
+    color: #f8fafc;
+    border-radius: 20px;
+    padding: 20px 22px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-button:active {
-    transform: translateY(1px);
+.panel-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
 }
 
-#calcBtn {
-    margin-top: 10px;
+.checklist {
+    margin: 0;
+    padding-left: 18px;
 }
 
-#demoBtn {
-    margin-top: 10px;
-    background: #fff;
-    color: var(--text);
-    border: 1px solid var(--line);
+.checklist li {
+    margin: 8px 0;
+    color: #f8fafc;
 }
 
-#demoBtn:hover {
-    background: #f3f4f6;
+.content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "rate result"
+        "mode guide";
+    gap: 22px;
+    margin-top: 30px;
+    align-items: stretch;
 }
 
-.btn-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+.card-rate {
+    grid-area: rate;
 }
 
-/* ===== 結果與狀態 ===== */
-#result {
-    margin-top: 12px;
-    padding: 14px 16px;
-    border: 1px solid var(--line);
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
-    min-height: 72px;
+.card-result {
+    grid-area: result;
 }
 
-#statusIcon {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #ccc;
-    display: inline-block;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, .06);
+.card-mode {
+    grid-area: mode;
 }
 
-/* ===== 卡片區塊 ===== */
+.card-guide {
+    grid-area: guide;
+}
+
 .card {
     background: var(--card);
-    border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: 16px 18px;
-    margin: 18px auto;
+    border: 1px solid var(--line);
+    padding: 18px 20px;
     box-shadow: var(--shadow);
+    animation: rise 0.5s ease both;
+    height: 100%;
 }
 
-.card h3 {
-    margin-top: 0;
+.card.highlight {
+    border: 1px solid rgba(15, 76, 92, 0.25);
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
 }
 
-/* ===== 卡片收合功能 ===== */
+@keyframes rise {
+    from {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .card-header {
     cursor: pointer;
     user-select: none;
@@ -262,57 +200,239 @@ button:active {
     opacity: 0;
 }
 
-.card h3 {
-    margin-top: 0;
+h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    font-family: "Sora", "Noto Sans TC", sans-serif;
 }
 
-.card #calcBtn {
+p {
+    margin: 10px 0;
+    color: var(--text);
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.muted-555 {
+    color: #556070;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-inline {
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+    margin: 12px 0;
+}
+
+.field label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #3a475a;
+}
+
+.field-group {
     margin-top: 12px;
+    display: grid;
+    gap: 6px;
 }
 
-.card pre#result {
+input[type="number"],
+select {
+    width: min(420px, 100%);
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--text);
+    outline: none;
+    font-size: 15px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+input[type="number"]:focus,
+select:focus {
+    border-color: rgba(15, 76, 92, 0.6);
+    box-shadow: 0 0 0 3px rgba(15, 76, 92, 0.12);
+}
+
+.hint {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+button {
+    height: 40px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 12px;
+    background: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 10px 20px rgba(15, 76, 92, 0.2);
+}
+
+button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#demoBtn {
+    background: #ffffff;
+    color: var(--primary);
+    border: 1px solid rgba(15, 76, 92, 0.3);
     box-shadow: none;
-    border: 1px dashed var(--line);
-    background: #fafafa;
-    padding: 12px 14px;
-    min-height: 72px;
 }
 
-/* ===== 連結 ===== */
+#demoBtn:hover {
+    background: rgba(15, 76, 92, 0.08);
+}
+
+#result {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border: 1px dashed rgba(15, 76, 92, 0.3);
+    background: #f8fafc;
+    border-radius: 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 90px;
+    font-family: "Sora", "Noto Sans TC", sans-serif;
+    font-size: 14px;
+}
+
+#statusIcon {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08);
+}
+
+.status-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    color: #3a475a;
+}
+
+.status-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+.dot-red {
+    background: #e74c3c;
+}
+
+.dot-yellow {
+    background: #f1c40f;
+}
+
+.dot-green {
+    background: #2ecc71;
+}
+
 a {
-    color: #111827;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(15, 76, 92, 0.3);
+    padding-bottom: 2px;
 }
 
 a:hover {
-    opacity: .8;
+    opacity: 0.8;
 }
 
-/* ===== 手機調整 ===== */
-@media (max-width: 520px) {
-    h2 {
-        font-size: 24px;
-    }
+.footer {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    border: 1px solid var(--line);
+}
 
-    body {
-        padding-top: 20px;
+@media (max-width: 960px) {
+    .hero {
+        grid-template-columns: 1fr;
     }
+    .content-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "rate"
+            "mode"
+            "result"
+            "guide";
+    }
+}
 
-    #calcBtn {
+@media (max-width: 600px) {
+    .page {
+        padding: 24px 14px 48px;
+    }
+    .hero {
+        padding: 22px 18px;
+    }
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    button {
         width: 100%;
     }
-
-    ul {
-        margin-left: 16px;
-    }
-
-    .card {
-        padding: 14px 14px;
-        margin: 14px auto;
-    }
-
     .btn-row {
         flex-direction: column;
+    }
+    input[type="number"],
+    select {
+        width: 100%;
     }
 }
