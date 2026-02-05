@@ -13,11 +13,13 @@ demoBtn.addEventListener("click", fillDemoData);
 function switchMode() {
     const mode = calcModeSelect.value;
 
-    priceMode.style.display = mode === "price" ? "block" : "none";
-    percentMode.style.display = mode === "percent" ? "block" : "none";
+    priceMode.classList.toggle("hidden", mode !== "price");
+    percentMode.classList.toggle("hidden", mode !== "percent");
 
     resetResult();
 }
+
+switchMode();
 
 function resetResult() {
     resultEl.innerText = "";
