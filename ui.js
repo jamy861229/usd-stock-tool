@@ -5,6 +5,7 @@ const resultEl = document.getElementById("result");
 const statusIcon = document.getElementById("statusIcon");
 const calcBtn = document.getElementById("calcBtn");
 const demoBtn = document.getElementById("demoBtn");
+const STATUS_CLASSES = ["is-red", "is-yellow", "is-green"];
 
 calcModeSelect.addEventListener("change", switchMode);
 calcBtn.addEventListener("click", runCalc);
@@ -23,15 +24,19 @@ switchMode();
 
 function resetResult() {
     resultEl.innerText = "";
-    statusIcon.style.backgroundColor = "#ccc";
+    statusIcon.classList.remove(...STATUS_CLASSES);
 }
 function applyStatusColor(status) {
     const map = {
-        red: "#e74c3c",
-        yellow: "#f1c40f",
-        green: "#2ecc71"
+        red: "is-red",
+        yellow: "is-yellow",
+        green: "is-green"
     };
-    statusIcon.style.backgroundColor = map[status] ?? "#ccc";
+    statusIcon.classList.remove(...STATUS_CLASSES);
+    const className = map[status];
+    if (className) {
+        statusIcon.classList.add(className);
+    }
 }
 
 function fillDemoData(){

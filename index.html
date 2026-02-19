@@ -57,7 +57,7 @@
                 <div class="flex-center">
                     <h3 class="title-inline card-header" onclick="toggleCard(this)">投資判斷結果 <span
                             class="collapse-icon">−</span></h3>
-                    <div id="statusIcon"></div>
+                    <div id="statusIcon" class="status-dot status-dot--lg"></div>
                 </div>
                 <div class="card-content">
                     <pre id="result"></pre>
@@ -66,9 +66,9 @@
                     </p>
 
                     <ul class="status-list">
-                        <li><span class="dot dot-red"></span>低於打平門檻，匯率可能吃掉獲利</li>
-                        <li><span class="dot dot-yellow"></span>剛好打平，風險偏高</li>
-                        <li><span class="dot dot-green"></span>高於安全門檻，相對安全</li>
+                        <li><span class="status-dot status-dot--sm is-red"></span>低於打平門檻，匯率可能吃掉獲利</li>
+                        <li><span class="status-dot status-dot--sm is-yellow"></span>剛好打平，風險偏高</li>
+                        <li><span class="status-dot status-dot--sm is-green"></span>高於安全門檻，相對安全</li>
                     </ul>
                 </div>
             </div>
