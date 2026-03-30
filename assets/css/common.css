@@ -429,28 +429,50 @@ button:active,
 /* =========================================================
    Components - Footer
 ========================================================= */
-.footer {
-    margin-top: 24px;
-    padding: 18px 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 16px;
-    border: 1px solid var(--line);
-}
-.footer__content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.site-footer {
+    margin-top: 40px;
+    padding: 20px 16px;
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
 }
 
-.footer__links {
+.footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-text {
+    margin: 0 0 10px;
+    color: #4b5563;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.footer-links {
     display: flex;
-    gap: 16px;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-bottom: 6px;
 }
 
-.footer__links a {
-    font-weight: 500;
-    border-bottom: none;
+.footer-links a {
+    color: #111827;
+    text-decoration: none;
+    font-size: 13px;
+    transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+.footer-meta {
+    margin: 0;
+    font-size: 12px;
+    color: #9ca3af;
+    letter-spacing: 0.2px;
 }
 
 /* =========================================================
