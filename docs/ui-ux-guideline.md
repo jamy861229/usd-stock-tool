@@ -1,5 +1,20 @@
 # UI / UX Guideline
 
+## When to use
+
+Use this guideline when:
+
+- creating a new tool page
+- modifying layout or UI structure
+- adjusting spacing / colors / typography
+- designing result display
+
+Do NOT use this for:
+
+- business logic
+- calculation formulas
+- backend design
+
 ## 設計定位
 
 本網站為「實用型小工具集合」，核心原則：
