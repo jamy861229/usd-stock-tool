@@ -16,6 +16,9 @@ Focus:
 
 ---
 
+## Product Map
+See: /docs/product-map.md
+
 ## Product Structure
 
 ### A. Investment Tools (short-cycle)
