@@ -165,6 +165,14 @@ This is NOT a dashboard system.
 
 ---
 
+## Copy Rules
+
+- do not use `。` in UI copy, content copy, or product text by default
+- only use `。` when explicitly requested
+- prefer short, direct phrasing with commas or line breaks when needed
+
+---
+
 ## Implementation Rules
 
 - Prefer smallest useful version (MVP first)

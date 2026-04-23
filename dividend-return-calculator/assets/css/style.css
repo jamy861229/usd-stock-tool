@@ -1,0 +1,236 @@
+/* ==========================
+   Dividend Return Tool
+============================= */
+:root {
+    --status-red: #d1495b;
+    --status-yellow: #c0841d;
+    --status-green: #2d6a4f;
+}
+
+/* ==========================
+   Hero Support
+============================= */
+.hero-panel {
+    background: #1b4332;
+    color: #f8fafc;
+    border-radius: 20px;
+    padding: 20px 22px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.panel-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+}
+
+.tag {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(45, 106, 79, 0.08);
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.checklist {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.checklist li {
+    margin: 8px 0;
+    color: #f8fafc;
+}
+
+/* ==========================
+   Tool Layout
+============================= */
+.tool-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 22px;
+    margin-top: 30px;
+    align-items: stretch;
+}
+
+.input-panel,
+.result-panel {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.input-panel {
+    display: grid;
+    align-content: start;
+}
+
+.result-panel {
+    display: grid;
+    align-content: start;
+    gap: 18px;
+}
+
+/* ==========================
+   Result Summary
+============================= */
+.result-top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.result-summary {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.result-main {
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    font-family: "Sora", "Noto Sans TC", sans-serif;
+    transition: color 0.2s ease;
+}
+
+.result-status-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 28px;
+}
+
+.result-status {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.result-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    background: #e5e7eb;
+}
+
+.result-note {
+    margin: 0;
+    color: #475569;
+    font-size: 14px;
+}
+
+.result-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.card-mini {
+    background: #f9fafb;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+}
+
+.card-mini .label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.card-mini .value {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.status-green {
+    color: var(--status-green);
+}
+
+.status-red {
+    color: var(--status-red);
+}
+
+.status-yellow {
+    color: var(--status-yellow);
+}
+
+.badge-green {
+    background: rgba(45, 106, 79, 0.12);
+    color: var(--status-green);
+}
+
+.badge-red {
+    background: rgba(209, 73, 91, 0.12);
+    color: var(--status-red);
+}
+
+.badge-yellow {
+    background: rgba(192, 132, 29, 0.14);
+    color: var(--status-yellow);
+}
+
+/* ==========================
+   Guide Panel
+============================= */
+.guide-panel {
+    margin-top: 22px;
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.guide-header {
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guide-header:hover {
+    opacity: 0.7;
+}
+
+.guide-content {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.guide-content p:first-child {
+    margin-top: 0;
+}
+
+.guide-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================
+   Responsive
+============================= */
+@media (max-width: 960px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .result-main {
+        font-size: 42px;
+    }
+
+    .result-cards {
+        grid-template-columns: 1fr;
+    }
+}

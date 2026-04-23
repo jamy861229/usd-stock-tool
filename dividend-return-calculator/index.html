@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>股息報酬試算器(個股)｜快速評估現金流是否有感</title>
+    <meta name="description" content="輸入投入金額、殖利率、成本與補充保費估算率，快速試算股息投資的年收入、每月現金流與實際報酬率">
+    <meta name="keywords" content="股息, 配息, 殖利率, 股息報酬試算器(個股), 現金流, 被動收入, 投資工具">
+    <meta name="author" content="Free Life of Octopus">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://freelifeofoctopus.com/dividend-return-calculator/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="股息報酬試算器(個股)｜快速評估現金流是否有感">
+    <meta property="og:description" content="不只看表面殖利率，快速判斷扣除成本與補充保費估算後，股息收入是否真的值得投入">
+    <meta property="og:url" content="https://freelifeofoctopus.com/dividend-return-calculator/">
+    <meta property="og:site_name" content="Free Life of Octopus">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:image" content="https://freelifeofoctopus.com/usdstocktool/assets/images/og-image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="股息報酬試算器(個股)｜快速評估現金流是否有感">
+    <meta name="twitter:description" content="快速試算股息投資的年收入、每月現金流與實際報酬率">
+    <meta name="twitter:image" content="https://freelifeofoctopus.com/usdstocktool/assets/images/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/common.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" href="../usdstocktool/assets/images/favicon.ico">
+</head>
+
+<body>
+    <div class="page">
+        <div class="page-nav">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a class="breadcrumb__link" href="../index.html">首頁</a>
+                <span class="breadcrumb__sep" aria-hidden="true">/</span>
+                <span class="breadcrumb__current">股息報酬試算器(個股)</span>
+            </nav>
+        </div>
+
+        <header class="hero">
+            <div class="hero-content">
+                <div class="eyebrow">DIVIDEND CASH FLOW</div>
+                <h1>股息報酬試算器(個股)</h1>
+                <p class="lead">
+                    快速評估：<strong>表面殖利率，扣掉成本與補充保費估算後還剩多少？</strong><br />
+                    幫你看懂股息收入是否真的能形成有感現金流
+                </p>
+                <div class="hero-tags">
+                    <span class="tag">配息試算</span>
+                    <span class="tag">成本與保費估算</span>
+                    <span class="tag">月現金流</span>
+                </div>
+            </div>
+            <div class="hero-panel">
+                <div class="panel-title">你可以用這個工具做什麼？</div>
+                <ul class="checklist">
+                    <li>快速估算一年實際能拿到多少股息收入</li>
+                    <li>拆開看補充保費估算與成本對報酬率的壓縮，不只盯著殖利率</li>
+                    <li>先確認每月現金流是否有感，再決定這筆投資值不值得做</li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="tool-layout">
+            <section class="input-panel">
+                <h3>輸入條件</h3>
+
+                <div class="field">
+                    <label for="twdAmount">投入金額（台幣）</label>
+                    <input id="twdAmount" type="number" step="1" placeholder="例如 1000000">
+                </div>
+
+                <div class="field">
+                    <label for="yieldRate">殖利率（%）</label>
+                    <input id="yieldRate" type="number" step="0.01" placeholder="例如 5">
+                </div>
+
+                <div class="field">
+                    <label for="stockPrice">投資標的價格</label>
+                    <input id="stockPrice" type="number" step="0.01" placeholder="例如 100">
+                </div>
+
+                <div class="field">
+                    <label for="feeRate">手續費 / 成本（%）</label>
+                    <input id="feeRate" type="number" step="0.0001" value="0.1425" placeholder="預設 0.1425">
+                </div>
+
+                <div class="field">
+                    <label for="premiumRate">補充保費估算率（%）（可選）</label>
+                    <input id="premiumRate" type="number" step="0.01" placeholder="例如 2.11，未填視為 0">
+                </div>
+
+                <div class="btn-row">
+                    <button id="calcBtn" type="button">開始試算</button>
+                    <button id="demoBtn" type="button">範例填入</button>
+                </div>
+            </section>
+
+            <section class="result-panel">
+                <div class="result-top">
+                    <div class="result-summary" id="resultSummary">年實際股息收入約 --</div>
+                    <div class="result-main" id="resultMain">--</div>
+                    <div class="result-status-wrap">
+                        <div class="result-status" id="resultStatus">請輸入數值</div>
+                        <div class="result-badge hidden" id="resultBadge"></div>
+                    </div>
+                    <p class="result-note" id="resultNote">每月平均現金流與收入門檻判斷會顯示在這裡</p>
+                </div>
+
+                <div class="result-cards">
+                    <div class="card-mini">
+                        <div class="label">股息收入</div>
+                        <div class="value" id="grossDividend"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">補充保費估算</div>
+                        <div class="value" id="premiumImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">成本影響</div>
+                        <div class="value" id="costImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">每月現金流</div>
+                        <div class="value" id="monthlyCashflow"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">收入門檻</div>
+                        <div class="value" id="incomeThreshold"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">預估股數</div>
+                        <div class="value" id="shareEstimate"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section class="guide-panel">
+            <div class="guide-header" onclick="toggleGuide()">
+                說明與判斷依據
+                <span id="guideIcon">▼</span>
+            </div>
+
+            <div class="guide-content" id="guideContent">
+                <p><strong>年實際股息收入</strong>：扣除補充保費估算與投入成本後，估算一年真正能留下的現金</p>
+                <p><strong>實際報酬率</strong>：用年實際股息收入除以投入金額，幫你判斷殖利率是否還有吸引力</p>
+                <p><strong>每月現金流</strong>：把年收入平均到 12 個月，快速看是否達到你想要的被動收入感受</p>
+                <p><strong>手續費 / 成本</strong>：預設以 0.1425% 作為常見的台股買入手續費估算，你可以依券商折扣、平台成本或自己的實際交易條件調整</p>
+                <p><strong>補充保費估算率</strong>：非必填，未填時視為 0，若你想粗估股利補充保費影響，可自行填入比例，例如 2.11</p>
+                <p><strong>補充保費提醒</strong>：本工具不會依健保正式扣費規則自動判定，這裡是手動粗估欄位，若要精算，仍應依單次配息金額與健保署規定判斷</p>
+                <p><strong>本工具假設殖利率固定，未納入股息稅負，也未考慮股價波動與再投入效果，僅適用於快速評估股息收入與報酬</strong></p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <p class="footer-text">
+                    Free Life of Octopus 提供實用小工具
+                </p>
+
+                <nav class="footer-links" aria-label="Footer">
+                    <a href="https://www.instagram.com/freelifeofoctopus?igsh=cWptYXM2am94bjlo" target="_blank"
+                        rel="noopener noreferrer">IG</a>
+                    <a href="https://line.me/S/shop/sticker/author/5177699/new?lang=zh-Hant&utm_source=gnsh_staut"
+                        target="_blank" rel="noopener noreferrer">貼圖</a>
+                    <a href="https://mail.google.com/mail/?view=cm&to=admin@freelifeofoctopus.com&su=網站回饋"
+                        target="_blank" rel="noopener noreferrer">聯絡我們</a>
+                </nav>
+
+                <p class="footer-meta">
+                    admin@freelifeofoctopus.com ｜ © Free Life of Octopus
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./assets/js/logic.js"></script>
+    <script src="./assets/js/ui.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

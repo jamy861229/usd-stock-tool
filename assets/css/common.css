@@ -328,6 +328,10 @@ button:active,
     background: linear-gradient(180deg, #f77f00 0%, #ffb256 100%);
 }
 
+.tool-list > .tool-card:nth-child(3)::before {
+    background: linear-gradient(180deg, #2d6a4f 0%, #74c69d 100%);
+}
+
 .tool-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 18px 34px rgba(15, 23, 42, 0.09);
