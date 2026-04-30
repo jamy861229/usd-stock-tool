@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETF 配息報酬試算器｜快速評估現金流與實際報酬</title>
+    <meta name="description" content="輸入投入金額、預期年配息率、ETF 費用率與淨值變化，快速試算每月平均現金流與實際報酬率">
+    <meta name="keywords" content="ETF配息, 配息報酬, ETF報酬率, 現金流試算, 補充保費, ETF費用率">
+    <meta name="author" content="Free Life of Octopus">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://freelifeofoctopus.com/etf-dividend-return-calculator/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ETF 配息報酬試算器｜快速評估現金流與實際報酬">
+    <meta property="og:description" content="快速判斷 ETF 配息情境是否划算，拆開看配息、費用、補充保費與淨值變化">
+    <meta property="og:url" content="https://freelifeofoctopus.com/etf-dividend-return-calculator/">
+    <meta property="og:site_name" content="Free Life of Octopus">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:image" content="https://freelifeofoctopus.com/usdstocktool/assets/images/og-image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ETF 配息報酬試算器｜快速評估現金流與實際報酬">
+    <meta name="twitter:description" content="快速試算 ETF 每月平均現金流、年實際配息收入與實際報酬率">
+    <meta name="twitter:image" content="https://freelifeofoctopus.com/usdstocktool/assets/images/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/common.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" href="../usdstocktool/assets/images/favicon.ico">
+</head>
+
+<body>
+    <div class="page">
+        <div class="page-nav">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a class="breadcrumb__link" href="../index.html">首頁</a>
+                <span class="breadcrumb__sep" aria-hidden="true">/</span>
+                <span class="breadcrumb__current">ETF 配息報酬試算器</span>
+            </nav>
+        </div>
+
+        <header class="hero">
+            <div class="hero-content">
+                <div class="eyebrow">ETF DIVIDEND RETURN</div>
+                <h1>ETF 配息報酬試算器</h1>
+                <p class="lead">
+                    用配息率、費用與淨值變化做情境試算，快速判斷：<strong>這樣領息是否划算？</strong><br />
+                    重點看每月現金流，也看扣除成本後的實際報酬
+                </p>
+                <div class="hero-tags">
+                    <span class="tag">每月現金流</span>
+                    <span class="tag">費用拆解</span>
+                    <span class="tag">淨值情境</span>
+                </div>
+            </div>
+            <div class="hero-panel">
+                <div class="panel-title">你可以用這個工具做什麼？</div>
+                <ul class="checklist">
+                    <li>估算 ETF 一年配息換成每月平均可領多少</li>
+                    <li>把 ETF 內扣費用、手續費與補充保費放進同一個情境看報酬</li>
+                    <li>避免只看到高配息，卻忽略淨值下跌與成本</li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="tool-layout">
+            <section class="input-panel">
+                <h3>輸入條件</h3>
+
+                <div class="field">
+                    <label for="twdAmount">投入金額（台幣）</label>
+                    <input id="twdAmount" type="number" step="1" placeholder="例如 1000000">
+                </div>
+
+                <div class="field">
+                    <label for="dividendRate">預期年配息率（%）</label>
+                    <input id="dividendRate" type="number" step="0.01" placeholder="例如 5">
+                </div>
+
+                <div class="field optional-grid">
+                    <label for="expenseRate">ETF 費用率（%）</label>
+                    <input id="expenseRate" type="number" step="0.01" placeholder="例如 0.3">
+                </div>
+
+                <div class="field optional-grid">
+                    <label for="tradeFeeRate">手續費（%）</label>
+                    <input id="tradeFeeRate" type="number" step="0.0001" value="0.1425" placeholder="預設 0.1425">
+                </div>
+
+                <div class="field optional-grid">
+                    <label for="navChangeRate">預期淨值變化（%）</label>
+                    <input id="navChangeRate" type="number" step="0.01" placeholder="例如 -1 或 2">
+                </div>
+
+                <label class="toggle-row" for="useSupplementalPremium">
+                    <input id="useSupplementalPremium" type="checkbox">
+                    <span class="toggle-ui" aria-hidden="true"></span>
+                    <span>
+                        <span class="toggle-title">扣除補充保費</span>
+                        <span class="toggle-desc">以配息的 2.11% 估算</span>
+                    </span>
+                </label>
+
+                <div class="btn-row">
+                    <button id="calcBtn" type="button">開始試算</button>
+                    <button id="demoBtn" type="button">範例填入</button>
+                </div>
+            </section>
+
+            <section class="result-panel">
+                <div class="result-top">
+                    <div class="result-summary" id="resultSummary">每月平均現金流 --</div>
+                    <div class="result-main" id="resultMain">--</div>
+                    <div class="result-status-wrap">
+                        <div class="result-status" id="resultStatus">請輸入數值</div>
+                        <div class="result-badge hidden" id="resultBadge"></div>
+                    </div>
+                    <p class="result-note" id="resultNote">輸入情境後，這裡會說明配息是否仍有吸引力</p>
+                </div>
+
+                <div class="result-cards">
+                    <div class="card-mini">
+                        <div class="label">年實際配息收入</div>
+                        <div class="value" id="netAnnualIncome"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">實際報酬率</div>
+                        <div class="value" id="actualReturnRate"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">配息</div>
+                        <div class="value" id="grossDividend"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">ETF 費用</div>
+                        <div class="value" id="expenseImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">補充保費</div>
+                        <div class="value" id="premiumImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">淨值變化</div>
+                        <div class="value" id="navImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">手續費</div>
+                        <div class="value" id="tradeFeeImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">有感收入</div>
+                        <div class="value" id="incomeSignal"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section class="guide-panel">
+            <div class="guide-header" onclick="toggleGuide()">
+                說明與判斷依據
+                <span id="guideIcon">▼</span>
+            </div>
+
+            <div class="guide-content" id="guideContent">
+                <p><strong>每月平均現金流</strong>：用年實際配息收入除以 12，方便判斷是否有感</p>
+                <p><strong>年實際配息收入</strong>：預估年配息扣除補充保費後的金額，ETF 費用率為內扣成本，不視為額外從配息收取</p>
+                <p><strong>實際報酬率</strong>：年實際配息收入加上淨值變化，再扣除一次性手續費與 ETF 內扣費用影響後，占投入金額的比例</p>
+                <p><strong>有感收入</strong>：目前以每月平均現金流 10000 元作為簡易門檻</p>
+                <p><strong>估算方式</strong>：本工具以年配息率進行估算，等價於以每股配息與股價推算之結果，用於簡化計算與快速判斷</p>
+                <p><strong>成本提醒</strong>：ETF 配息不固定，本工具使用使用者假設的年配息率進行情境模擬，未納入完整稅制與市場波動，僅用於快速評估</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <p class="footer-text">
+                    Free Life of Octopus 提供實用小工具
+                </p>
+
+                <nav class="footer-links" aria-label="Footer">
+                    <a href="https://www.instagram.com/freelifeofoctopus?igsh=cWptYXM2am94bjlo" target="_blank"
+                        rel="noopener noreferrer">IG</a>
+                    <a href="https://line.me/S/shop/sticker/author/5177699/new?lang=zh-Hant&utm_source=gnsh_staut"
+                        target="_blank" rel="noopener noreferrer">貼圖</a>
+                    <a href="https://mail.google.com/mail/?view=cm&to=admin@freelifeofoctopus.com&su=網站回饋"
+                        target="_blank" rel="noopener noreferrer">聯絡我們</a>
+                </nav>
+
+                <p class="footer-meta">
+                    admin@freelifeofoctopus.com ｜ © Free Life of Octopus
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./assets/js/logic.js"></script>
+    <script src="./assets/js/ui.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
