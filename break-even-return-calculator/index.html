@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>損益兩平報酬率試算器｜快速估算要先賺回多少成本</title>
+    <meta name="description" content="輸入投入金額、手續費率、ETF 費用率與是否扣除補充保費，快速估算投資前需要先賺回多少報酬率">
+    <meta name="keywords" content="損益兩平報酬率, 投資成本, ETF費用率, 手續費試算, 補充保費, 報酬率試算">
+    <meta name="author" content="Free Life of Octopus">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://freelifeofoctopus.com/break-even-return-calculator/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="損益兩平報酬率試算器｜快速估算要先賺回多少成本">
+    <meta property="og:description" content="快速判斷手續費、ETF 內扣費用與補充保費會讓投資先背上多少報酬壓力">
+    <meta property="og:url" content="https://freelifeofoctopus.com/break-even-return-calculator/">
+    <meta property="og:site_name" content="Free Life of Octopus">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:image" content="https://freelifeofoctopus.com/usdstocktool/assets/images/og-image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="損益兩平報酬率試算器｜快速估算要先賺回多少成本">
+    <meta name="twitter:description" content="快速估算投資成本對最低需要報酬率的影響">
+    <meta name="twitter:image" content="https://freelifeofoctopus.com/usdstocktool/assets/images/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/common.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" href="../usdstocktool/assets/images/favicon.ico">
+</head>
+
+<body>
+    <div class="page">
+        <div class="page-nav">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a class="breadcrumb__link" href="../index.html">首頁</a>
+                <span class="breadcrumb__sep" aria-hidden="true">/</span>
+                <span class="breadcrumb__current">損益兩平報酬率試算器</span>
+            </nav>
+        </div>
+
+        <header class="hero">
+            <div class="hero-content">
+                <div class="eyebrow">BREAK-EVEN RETURN</div>
+                <h1>損益兩平報酬率試算器</h1>
+                <p class="lead">
+                    快速評估：<strong>這筆投資要先賺多少，才算打平成本？</strong><br />
+                    把手續費、ETF 內扣費用與補充保費影響放在同一個門檻看
+                </p>
+                <div class="hero-tags">
+                    <span class="tag">成本門檻</span>
+                    <span class="tag">ETF 費用</span>
+                    <span class="tag">補充保費</span>
+                </div>
+            </div>
+            <div class="hero-panel">
+                <div class="panel-title">你可以用這個工具做什麼？</div>
+                <ul class="checklist">
+                    <li>先看投資一開始背負多少成本壓力</li>
+                    <li>快速估算至少需要多少報酬率才不虧</li>
+                    <li>判斷成本是否過高，避免小報酬被成本吃掉</li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="tool-layout">
+            <section class="input-panel">
+                <h3>輸入條件</h3>
+
+                <div class="field">
+                    <label for="twdAmount">投入金額（台幣）</label>
+                    <input id="twdAmount" type="number" step="1" placeholder="例如 1000000">
+                </div>
+
+                <div class="field">
+                    <label for="tradeFeeRate">手續費率（%）</label>
+                    <input id="tradeFeeRate" type="number" step="0.0001" value="0.1425" placeholder="預設 0.1425">
+                </div>
+
+                <div class="field">
+                    <label for="expenseRate">ETF 費用率（%）</label>
+                    <input id="expenseRate" type="number" step="0.01" placeholder="例如 0.3">
+                </div>
+
+                <label class="toggle-row" for="includeSellCost">
+                    <input id="includeSellCost" type="checkbox">
+                    <span class="toggle-ui" aria-hidden="true"></span>
+                    <span>
+                        <span class="toggle-title">是否包含賣出成本</span>
+                        <span class="toggle-desc">納入賣出手續費與 0.3% 交易稅，預設關閉</span>
+                    </span>
+                </label>
+
+                <div class="field">
+                    <label for="unitPrice">價格（每股 / 每單位）（選填）</label>
+                    <input id="unitPrice" type="number" step="0.01" placeholder="例如 100">
+                </div>
+
+                <label class="toggle-row" for="useSupplementalPremium">
+                    <input id="useSupplementalPremium" type="checkbox">
+                    <span class="toggle-ui" aria-hidden="true"></span>
+                    <span>
+                        <span class="toggle-title">是否扣除補充保費</span>
+                        <span class="toggle-desc">固定以報酬的 2.11% 估算，預設關閉</span>
+                    </span>
+                </label>
+
+                <div class="btn-row">
+                    <button id="calcBtn" type="button">開始試算</button>
+                    <button id="demoBtn" type="button">範例填入</button>
+                </div>
+            </section>
+
+            <section class="result-panel">
+                <div class="result-top">
+                    <div class="result-summary" id="resultSummary">需要先賺回 --</div>
+                    <div class="result-main" id="resultMain">--</div>
+                    <div class="result-status-wrap">
+                        <div class="result-status" id="resultStatus">請輸入數值</div>
+                        <div class="result-badge hidden" id="resultBadge"></div>
+                    </div>
+                    <p class="result-note" id="resultNote">輸入條件後，這裡會說明成本門檻是否偏高</p>
+                </div>
+
+                <div class="result-cards">
+                    <div class="card-mini">
+                        <div class="label">損益兩平報酬率</div>
+                        <div class="value" id="breakEvenRate"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">需要賺回金額</div>
+                        <div class="value" id="requiredReturnAmount"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">每單位需上漲</div>
+                        <div class="value" id="unitPriceRise"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">交易成本模式</div>
+                        <div class="value" id="costMode"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">買入手續費</div>
+                        <div class="value" id="buyFeeImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">賣出成本</div>
+                        <div class="value" id="sellCostImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">ETF 費用影響</div>
+                        <div class="value" id="expenseImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">補充保費影響</div>
+                        <div class="value" id="premiumImpact"></div>
+                    </div>
+                    <div class="card-mini">
+                        <div class="label">基礎成本率</div>
+                        <div class="value" id="baseCostRate"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section class="guide-panel">
+            <div class="guide-header" onclick="toggleGuide()">
+                說明與判斷依據
+                <span id="guideIcon">▼</span>
+            </div>
+
+            <div class="guide-content" id="guideContent">
+                <p><strong>損益兩平報酬率</strong>：代表這筆投資至少需要賺到多少比例，才足以抵銷手續費與 ETF 費用影響</p>
+                <p><strong>賣出成本</strong>：預設僅估算買入成本，開啟後會加入賣出手續費與 0.3% 交易稅</p>
+                <p><strong>每單位需上漲</strong>：若輸入價格，會用價格乘以保本報酬率，換算每股或每單位需要上漲多少</p>
+                <p><strong>補充保費</strong>：開啟後會把報酬被扣 2.11% 的影響納入，因此需要的毛報酬率會略高</p>
+                <p><strong>ETF 費用率</strong>：屬於內扣成本，這裡用來估算它對整體報酬率的拖累，不代表額外收款</p>
+                <p><strong>成本提醒</strong>：本工具是簡化試算，未納入完整稅制、買賣價差、股價波動與不同券商費率，適合用於快速判斷成本門檻</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <p class="footer-text">
+                    Free Life of Octopus 提供實用小工具
+                </p>
+
+                <nav class="footer-links" aria-label="Footer">
+                    <a href="https://www.instagram.com/freelifeofoctopus?igsh=cWptYXM2am94bjlo" target="_blank"
+                        rel="noopener noreferrer">IG</a>
+                    <a href="https://line.me/S/shop/sticker/author/5177699/new?lang=zh-Hant&utm_source=gnsh_staut"
+                        target="_blank" rel="noopener noreferrer">貼圖</a>
+                    <a href="https://mail.google.com/mail/?view=cm&to=admin@freelifeofoctopus.com&su=網站回饋"
+                        target="_blank" rel="noopener noreferrer">聯絡我們</a>
+                </nav>
+
+                <p class="footer-meta">
+                    admin@freelifeofoctopus.com ｜ © Free Life of Octopus
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./assets/js/logic.js"></script>
+    <script src="./assets/js/ui.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
